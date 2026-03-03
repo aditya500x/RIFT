@@ -47,8 +47,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 80%;
-    --input: 0 0% 80%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
     --ring: 221 83% 53%;
 
     --radius: 0.5rem;
@@ -115,15 +115,15 @@
   }
 
   h1 {
-    @apply text-5xl md:text-7xl lg:text-8xl;
-    font-size: clamp(2.3rem, 8.5vw, 7.5rem);
-    letter-spacing: -0.04em;
+    @apply text-6xl md:text-8xl lg:text-9xl;
+    font-size: clamp(2.5rem, 10vw, 9rem);
+    letter-spacing: -0.045em;
     line-height: 1;
   }
 
   h2 {
-    @apply text-3xl md:text-5xl lg:text-6xl;
-    font-size: clamp(1.9rem, 6vw, 5.6rem);
+    @apply text-4xl md:text-6xl lg:text-7xl;
+    font-size: clamp(2rem, 7vw, 7rem);
     letter-spacing: -0.03em;
     line-height: 1.05;
   }
@@ -208,7 +208,7 @@
 
 .marquee-shell {
   position: relative;
-  z-index: 10;
+  z-index: 50;
   background: hsl(0 0% 100%);
 }
 
@@ -246,7 +246,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 13s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 @keyframes marquee-reverse {
@@ -255,12 +255,7 @@
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 13s linear infinite;
-}
-
-.marquee-shell:hover .animate-marquee,
-.marquee-shell:hover .animate-marquee-reverse {
-  animation-play-state: paused;
+  animation: marquee-reverse 25s linear infinite;
 }
 
 /* Smooth scrolling */
