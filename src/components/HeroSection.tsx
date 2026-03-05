@@ -13,13 +13,13 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-foreground/25 text-sm font-medium text-muted-foreground hover:border-primary/40 transition-all cursor-default">
-            <Calendar size={16} strokeWidth={2} />
-            <span className="font-semibold">MARCH 08–11, 2026</span>
+          <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-primary/80 text-base font-semibold text-foreground hover:border-primary transition-all cursor-default">
+            <Calendar size={16} strokeWidth={2} className="text-primary" />
+            <span>March 08-11, 2026</span>
           </span>
-          <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-foreground/25 text-sm font-medium text-muted-foreground hover:border-primary/40 transition-all cursor-default">
-            <MapPin size={16} strokeWidth={2} />
-            <span className="font-semibold">REVA UNIVERSITY, BANGALORE</span>
+          <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-primary/80 text-base font-semibold text-foreground hover:border-primary transition-all cursor-default">
+            <MapPin size={16} strokeWidth={2} className="text-primary" />
+            <span>REVA University, Bangalore</span>
           </span>
         </motion.div>
 
