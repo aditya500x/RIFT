@@ -2,6 +2,22 @@
 @import url('https://fonts.cdnfonts.com/css/bl-melody');
 
 @font-face {
+  font-family: 'BL Melody Book';
+  src: url('/BLMelody-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BL Melody Medium';
+  src: url('/BLMelody-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'BL Melody SemiBold';
   src: url('/BLMelody-SemiBold.woff2') format('woff2');
   font-weight: 600;
