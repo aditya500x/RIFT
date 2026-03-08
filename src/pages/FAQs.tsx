@@ -34,41 +34,92 @@ const FAQs = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main className="pt-32 pb-40">
-        <div className="container max-w-4xl">
+        <div className="container max-w-6xl">
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-24"
+            className="flex flex-col items-center mb-20"
           >
-            <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">
-              <span className="text-[#0052FF]">Frequently</span> Asked Questions
+            <h1 style={{
+              fontFamily: "'BL Melody SemiBold', sans-serif",
+              fontWeight: 600,
+              fontSize: '48px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '973px',
+              height: '73px',
+              transform: 'rotate(0deg)',
+              opacity: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <span className="text-[#0052FF] mr-[0.25em]">Frequently</span> Asked Questions
             </h1>
-            <p className="text-lg text-muted-foreground opacity-70">
+            <p className="text-muted-foreground opacity-70" style={{
+              fontFamily: "'BL Melody ExtraLight', sans-serif",
+              fontWeight: 200,
+              fontSize: '25px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '973px',
+              height: '30px',
+              transform: 'rotate(0deg)',
+              opacity: 1
+            }}>
               description
             </p>
           </motion.div>
 
           {/* FAQ Categories */}
-          <div className="space-y-24 mt-16 px-4">
+          <div className="space-y-12 mt-4 px-4">
             {faqData.map((section, sIdx) => (
               <div key={sIdx}>
-                <h2 className="text-4xl font-bold text-center text-[#0052FF] mb-12">
+                <h2 className="text-4xl font-bold text-center text-[#0052FF] mb-4" style={{ fontFamily: "'BL Melody SemiBold', sans-serif" }}>
                   {section.category}
                 </h2>
-                <Accordion type="single" collapsible className="w-full space-y-2">
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="mx-auto flex flex-col pt-0"
+                  style={{
+                    width: '851px',
+                    minHeight: '306px',
+                    gap: '22px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
                   {section.questions.map((item, qIdx) => (
                     <AccordionItem
                       key={qIdx}
                       value={`item-${sIdx}-${qIdx}`}
-                      className="border-b-[1px] border-foreground/10 px-0"
+                      className="border-b-[1px] border-black px-0"
+                      style={{ minHeight: '60px' }}
                     >
-                      <AccordionTrigger className="text-xl font-medium hover:no-underline py-8 transition-colors hover:text-[#0052FF] [&>svg]:bg-[#F1F1F1] [&>svg]:rounded-full [&>svg]:p-1.5 [&>svg]:h-8 [&>svg]:w-8 [&>svg]:text-black [&>svg]:transition-transform">
-                        {item.q}
+                      <AccordionTrigger className="hover:no-underline py-4 transition-all hover:text-[#0052FF] [&>svg]:bg-[#F1F1F1] [&>svg]:rounded-full [&>svg]:p-1.5 [&>svg]:h-8 [&>svg]:w-8 [&>svg]:text-black [&>svg]:transition-transform">
+                        <span style={{
+                          fontFamily: "'BL Melody Regular', sans-serif",
+                          fontWeight: 400,
+                          fontSize: '16px',
+                          lineHeight: '100%',
+                          letterSpacing: '0%',
+                          width: '80.1212408185573px',
+                          height: '20.12973137773939px',
+                          transform: 'rotate(-0.2deg)',
+                          opacity: 1,
+                          display: 'inline-block',
+                          textAlign: 'left'
+                        }}>
+                          {item.q}
+                        </span>
                       </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-8 text-lg leading-relaxed">
+                      <AccordionContent className="text-muted-foreground pb-6 px-1 text-lg leading-relaxed">
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>

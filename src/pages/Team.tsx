@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Twitter } from "lucide-react";
 
 /**
  * 💡 HOW TO ADD NEW TEAM MEMBERS:
@@ -15,28 +14,27 @@ import { Linkedin, Github } from "lucide-react";
  *      role: "Designation",
  *      image: memberNameImg,
  *      linkedin: "#",
- *      github: "#",
+ *      twitter: "#",
  *    },
  */
 
 // Import images here
 import skr from "@/assets/images/team/skr.png";
-// import simranImg from "@/assets/images/team/simran.png"; // Placeholder for Simran
 
 const teamMembers = [
   {
-    name: "Someshwar",
+    name: "SOMESHWAR",
     role: "Designation",
     image: skr,
     linkedin: "#",
-    github: "#",
+    twitter: "#",
   },
   {
-    name: "Simran",
+    name: "SIMRAN",
     role: "Designation",
-    image: skr, // Using skr as placeholder as requested image is not provided in context yet
+    image: skr, // Using placeholder
     linkedin: "#",
-    github: "#",
+    twitter: "#",
   }
 ];
 
@@ -49,61 +47,116 @@ const Team = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main className="pt-32 pb-40">
-        <div className="container max-w-7xl">
+        <div className="w-full flex flex-col items-center">
           {/* Header Section */}
-          <div className="text-center mb-24">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tight">
-              The <span className="text-primary">RIFT</span> Team
+          <div className="text-center mb-24 flex flex-col items-center">
+            <h1 className="mx-auto flex items-center justify-center" style={{
+              fontFamily: "'BL Melody SemiBold', sans-serif",
+              fontWeight: 600,
+              fontSize: '48px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '222px',
+              height: '58px',
+              transform: 'rotate(0deg)',
+              opacity: 1
+            }}>
+              The <span className="text-[#0052FF] ml-[0.25em]">Team</span>
             </h1>
-            <p className="text-lg text-muted-foreground opacity-70">
-              Meet the innovators behind the recursive revolution.
+            <p className="mx-auto" style={{
+              fontFamily: "'BL Melody Book', sans-serif",
+              fontWeight: 400,
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '164px',
+              height: '29px',
+              opacity: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#000000'
+            }}>
+              Meet the team
             </p>
           </div>
 
           {/* 3x3 Team Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32 justify-items-center mt-20">
+          <div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mx-auto"
+            style={{
+              width: '1520.618px',
+              marginTop: '160px',
+              gap: '60px 20px',
+              opacity: 1
+            }}
+          >
             {gridItems.map((member, index) => (
               <div
                 key={index}
-                className="w-full max-w-[450px] flex flex-col relative"
+                className="flex flex-col relative group"
+                style={{ width: '450px', minHeight: '350px' }}
               >
-                {/* Top Section: Icons and Shape */}
-                <div className="relative w-full aspect-[1920/2000] flex flex-col items-center justify-end overflow-hidden">
+                {/* Icons - Top Left */}
+                {member && (
+                  <div className="flex gap-2 absolute top-0 left-0 z-30">
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-5 h-5 text-[#0052FF]" />
+                    </a>
+                    <a href={member.twitter} target="_blank" rel="noopener noreferrer">
+                      <Twitter className="w-5 h-5 text-[#0052FF]" />
+                    </a>
+                  </div>
+                )}
 
-                  {member && (
-                    <div className="flex gap-4 absolute top-12 left-8 z-30">
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="w-7 h-7 text-[#0052FF]" />
-                      </a>
-                      <a href={member.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-7 h-7 text-[#0052FF]" />
-                      </a>
-                    </div>
-                  )}
-
-                  {/* Blue Base Shape - Always Present */}
+                {/* Main Visual Area */}
+                <div className="relative w-full h-[240px] flex flex-col items-center justify-end">
+                  {/* Blue Slanted Shape */}
                   <div
-                    className="absolute inset-x-0 bottom-4 h-[55%] bg-[#0052FF] -skew-y-[20deg] z-10 translate-y-4"
+                    className="absolute bg-[#0052FF] z-10"
+                    style={{
+                      width: '240px',
+                      height: '140px',
+                      transform: 'skewX(-40deg)',
+                      bottom: '20px'
+                    }}
                   />
 
-                  {/* Member Image - Clipped and Static */}
+                  {/* Member Image */}
                   {member && member.image && (
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="relative z-20 w-[95%] h-auto grayscale contrast-[1.1] saturate-0 object-contain translate-y-12"
+                      className="relative z-20 h-[280px] w-auto grayscale contrast-[1.1] saturate-0 object-contain translate-y-4"
                     />
                   )}
                 </div>
 
-                {/* Footer: Name & Role - Aligned Right as per Image */}
-                <div className="mt-8 text-right min-h-[100px]">
+                {/* Footer: Name & Role */}
+                <div className="mt-8 text-center px-4">
                   {member ? (
                     <>
-                      <h3 className="text-5xl font-black tracking-tighter uppercase leading-[0.85] text-foreground mb-2">
+                      <h3 style={{
+                        fontFamily: "'BL Melody SemiBold', sans-serif",
+                        fontWeight: 600,
+                        fontSize: '36px',
+                        lineHeight: '100%',
+                        letterSpacing: '-0.02em',
+                        textAlign: 'center',
+                        textTransform: 'uppercase'
+                      }}>
                         {member.name}
                       </h3>
-                      <p className="text-xl text-muted-foreground font-medium opacity-60">
+                      <p style={{
+                        fontFamily: "'BL Melody Book', sans-serif",
+                        fontWeight: 400,
+                        fontSize: '14px',
+                        lineHeight: '120%',
+                        textAlign: 'center',
+                        marginTop: '4px'
+                      }}>
                         {member.role}
                       </p>
                     </>

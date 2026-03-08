@@ -1,7 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
 
 /**
  * 💡 HOW TO ADD NEW JURY MEMBERS:
@@ -66,36 +64,68 @@ const Jury = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main className="pt-32 pb-40">
-        <div className="container max-w-7xl">
+        <div className="w-full flex flex-col items-center">
           {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-24"
-          >
-            <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">
-              The <span className="text-[#0052FF]">Jury</span>
+          <div className="text-center mb-24 flex flex-col items-center">
+            <h1 className="mx-auto flex items-center justify-center" style={{
+              fontFamily: "'BL Melody SemiBold', sans-serif",
+              fontWeight: 600,
+              fontSize: '48px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '202px',
+              height: '58px',
+              transform: 'rotate(0deg)',
+              opacity: 1
+            }}>
+              The <span className="text-[#0052FF] ml-[0.25em]">Jury</span>
             </h1>
-            <p className="text-lg text-muted-foreground opacity-70">
+            <p className="mx-auto text-muted-foreground opacity-70" style={{
+              fontFamily: "'BL Melody Book', sans-serif",
+              fontWeight: 400,
+              fontSize: '24px',
+              lineHeight: '100%',
+              letterSpacing: '0%',
+              textAlign: 'center',
+              width: '198px',
+              height: '29px',
+              opacity: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
               Short Description
             </p>
-          </motion.div>
+          </div>
 
           {/* Jury Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 justify-items-center">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
+            style={{
+              width: '1450px',
+              height: '970px',
+              gap: '100px',
+              opacity: 1,
+              transform: 'rotate(0deg)'
+            }}
+          >
             {juryMembers.map((member, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full max-w-[400px] flex flex-col group"
+                className="flex flex-col group"
+                style={{ width: '350px' }}
               >
-                {/* Image Slot - 1920:2000 Aspect Ratio */}
-                <div className="w-full aspect-[1920/2000] bg-[#E5E5E5] mb-6 overflow-hidden relative">
+                {/* Image Slot - 350x350 Frame */}
+                <div
+                  className="bg-[#E5E5E5] mb-6 overflow-hidden relative"
+                  style={{
+                    width: '350px',
+                    height: '350px',
+                    opacity: 1,
+                    transform: 'rotate(0deg)'
+                  }}
+                >
                   {member.image ? (
                     <img
                       src={member.image}
@@ -110,29 +140,43 @@ const Jury = () => {
                 </div>
 
                 {/* Info Section */}
-                <div className="w-full">
-                  <div className="flex justify-between items-end mb-2">
-                    <h3 className="text-3xl font-bold tracking-tight text-foreground transition-colors group-hover:text-[#0052FF]">
+                <div className="w-full" style={{ width: '350px' }}>
+                  <div className="pb-1 border-b-[1px] border-black mb-2">
+                    <h3 style={{
+                      fontFamily: "'BL Melody Medium', sans-serif",
+                      fontWeight: 500,
+                      fontSize: '32px',
+                      lineHeight: '100%',
+                      letterSpacing: '-0.06em',
+                      textAlign: 'left',
+                      verticalAlign: 'middle',
+                      height: '38px',
+                      opacity: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start'
+                    }} className="transition-colors group-hover:text-[#0052FF]">
                       {member.name}
                     </h3>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#0052FF] hover:scale-110 transition-transform"
-                    >
-                      <Linkedin className="w-6 h-6 fill-current" />
-                    </a>
                   </div>
 
-                  {/* Thin Line Separator */}
-                  <div className="w-full h-[1px] bg-foreground/10 mb-2" />
-
-                  <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider opacity-60">
+                  <p style={{
+                    fontFamily: "'BL Melody Book', sans-serif",
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    lineHeight: '100%',
+                    letterSpacing: '-0.06em',
+                    verticalAlign: 'middle',
+                    width: '350px',
+                    height: '17px',
+                    opacity: 1,
+                    display: 'flex',
+                    alignItems: 'center'
+                  }} className="text-muted-foreground">
                     {member.role}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
