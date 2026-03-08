@@ -57,6 +57,8 @@ const Navbar = () => {
     }
   };
 
+  const registerLink = { label: "Register", href: "#register", type: "hash" as const };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -95,7 +97,8 @@ const Navbar = () => {
             ))}
           </div>
           <a
-            href={isHomePage ? "#register" : "/#register"}
+            href="#register"
+            onClick={(event) => handleNavClick(event, registerLink)}
             className="btn-shine inline-flex items-center justify-center bg-primary text-primary-foreground px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Register
@@ -156,8 +159,11 @@ const Navbar = () => {
             ))}
               </div>
             <a
-              href={isHomePage ? "#register" : "/#register"}
-              onClick={() => setOpen(false)}
+              href="#register"
+              onClick={(event) => {
+                handleNavClick(event, registerLink);
+                setOpen(false);
+              }}
               className="btn-shine mt-4 inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-3 rounded-full text-base font-semibold hover:opacity-90 transition-opacity w-full max-w-xs"
             >
               Register
