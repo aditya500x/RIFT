@@ -64,6 +64,14 @@ const PreScheduleShowcase = () => {
   const [activeSlides, setActiveSlides] = useState<number[]>(showcaseCards.map(() => 0));
 
   useEffect(() => {
+    // Preload all images to prevent flickering and server pings during transitions
+    showcaseCards.forEach((card) => {
+      card.images.forEach((imagePath) => {
+        const img = new Image();
+        img.src = imagePath;
+      });
+    });
+
     const interval = setInterval(() => {
       setActiveSlides((prev) =>
         prev.map((index, cardIndex) => {
@@ -121,16 +129,20 @@ const PreScheduleShowcase = () => {
 
               {/* Image slider - second on mobile, alternating position on desktop */}
               <div className={`${isReversed ? "md:order-2" : "md:order-1"} space-y-4`}>
-                <div className="h-[240px] md:h-[260px] rounded-sm bg-gradient-to-br from-[#2f3138] to-[#26282f] border border-white/10 flex items-center justify-center overflow-hidden">
-                  <motion.img
-                    key={`${card.title}-${currentSlide}`}
-                    src={card.images[currentSlide]}
-                    alt={`${card.title} visual ${currentSlide + 1}`}
-                    className="w-full h-full object-cover"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                  />
+                <div className="relative h-[240px] md:h-[260px] rounded-sm bg-gradient-to-br from-[#2f3138] to-[#26282f] border border-white/10 flex items-center justify-center overflow-hidden">
+                  {card.images.map((img, imgIndex) => (
+                    <motion.img
+                      key={`${card.title}-${imgIndex}`}
+                      src={img}
+                      alt={`${card.title} visual ${imgIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: imgIndex === currentSlide ? 1 : 0 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      style={{ pointerEvents: imgIndex === currentSlide ? 'auto' : 'none' }}
+                      draggable={false}
+                    />
+                  ))}
                 </div>
 
                 <div className="flex items-center justify-center gap-2">
