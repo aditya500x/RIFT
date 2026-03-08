@@ -10,7 +10,7 @@ const Footer = () => {
       {/* Top Row */}
       <div className="grid grid-cols-1 md:grid-cols-3">
         <div
-          className="h-56 border-r border-b border-foreground"
+          className="hidden md:block h-56 border-r border-b border-foreground"
           style={{
             backgroundImage: `url(${footerGeometric})`,
             backgroundSize: "cover",
