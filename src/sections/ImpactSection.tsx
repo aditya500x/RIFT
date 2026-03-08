@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { number: "3", label: "Challenge Tracks", description: "AI, IoT, and Web3 innovation" },
-  { number: "30+", label: "Mentors", description: "Industry experts and leaders" },
-  { number: "10+", label: "Workshops", description: "Hands-on learning sessions" },
-  { number: "500", label: "Participants", description: "Diverse community of builders" },
+  { number: "7", label: "Hackathons", description: "AI, IoT, and Web3 innovation" },
+  { number: "20+", label: "Mentors", description: "Industry Experts & Mentors" },
+  { number: "6", label: "Workshops", description: "Curated Technical Workshops" },
+  { number: "3000+", label: "Participants", description: "Projected Participants" },
 ];
 
 const ImpactSection = () => {
@@ -21,7 +21,7 @@ const ImpactSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title mb-5">Impact</h2>
+          <h2 className="section-title mb-5">Event at a Glance</h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Build prototypes that strengthen India's technological sovereignty with real impact and
             expert support.

@@ -3,23 +3,23 @@ import { motion, useInView } from "framer-motion";
 
 const phases = [
   {
-    day: "Day 1",
-    title: "Kickoff & Team Formation",
-    date: "March 8, 2026",
+    day: "PHASE 1",
+    title: "R Summit",
+    date: "March 9 to 11",
     description: "Opening ceremony with workshops and networking opportunities. Get to know fellow participants, form teams, and start ideating on your projects.",
     highlights: ["Registration & Check-in", "Opening Keynote", "Team Formation", "Technical Workshops"],
   },
   {
-    day: "Day 2 & 3",
-    title: "Build & Innovation Sprint",
-    date: "March 9-10, 2026",
+    day: "PHASE 2",
+    title: "Rise",
+    date: "April 8 to 9",
     description: "Main hackathon days! Work on your projects, attend workshops, and get mentorship from industry experts. This is where the magic happens.",
     highlights: ["24/7 Hacking", "Mentor Sessions", "Tech Talks", "Mini Challenges"],
   },
   {
-    day: "Day 4",
-    title: "Demo Day & Awards",
-    date: "March 11, 2026",
+    day: "PHASE 3",
+    title: "Revolt",
+    date: "April 8 to 11",
     description: "Present your projects to judges and celebrate achievements with the community. Network with sponsors and win exciting prizes.",
     highlights: ["Final Presentations", "Judging", "Awards Ceremony", "Networking"],
   },

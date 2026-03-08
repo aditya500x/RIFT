@@ -54,10 +54,10 @@ const AboutSection = () => {
             <div className="border border-border bg-background p-6 md:p-8">
               <h4 className="text-lg md:text-xl font-bold mb-4">What You Will Experience</h4>
               <ul className="space-y-3 text-sm md:text-base text-muted-foreground">
-                <li>Problem statements rooted in real-world impact</li>
-                <li>Mentor checkpoints for fast iteration and feedback</li>
-                <li>Hands-on workshops across product and engineering</li>
-                <li>Final demo day with jury review and recognition</li>
+                <li>Industry-aligned real-world problem statements</li>
+                <li>Hands-on workshops on emerging technologies</li>
+                <li>24-hour domain-focused hackathons</li>
+                <li>Mentorship from industry experts</li>
               </ul>
             </div>
             <div className="mt-5 flex justify-center lg:justify-start">

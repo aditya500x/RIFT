@@ -48,7 +48,7 @@ const showcaseCards: ShowcaseCard[] = [
   {
     title: "The Divisions",
     accentWord: "Divisions",
-    subtitle: "9 domain tracks designed for high-impact innovation.",
+    subtitle: "7 domain tracks designed for high-impact innovation.",
     description:
       "Compete in focused categories that mirror real-world problems. Teams can build in domains such as health, education, sustainability, fintech, mobility, and future tech.",
     ctaLabel: "Know More",
