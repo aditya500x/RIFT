@@ -9,6 +9,8 @@ import Jury from "./pages/Jury";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
+import ScrollToTop from "./components/layout/ScrollToTop";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -17,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/faqs" element={<FAQs />} />
