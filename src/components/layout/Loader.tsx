@@ -1,0 +1,126 @@
+import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import loadingVideo from "@/assets/elements/main-loading.mp4";
+
+/**
+ * Full-screen loading overlay with video animation and zoom-out reveal.
+ *
+ * Lifecycle:
+ *   1. Mount → blue overlay + centered video auto-plays.
+ *   2. Video ends (or failsafe fires) → video scales to 15× over ~0.8 s.
+ *   3. Scale animation completes → calls onLoadingComplete to unmount.
+ *
+ * Failsafe: if the video has not ended within FAILSAFE_MS the reveal
+ * animation is triggered anyway, preventing an infinite loading state.
+ */
+
+interface LoaderProps {
+  /** Called once the reveal animation finishes; parent should set loading = false. */
+  onLoadingComplete: () => void;
+}
+
+/** Max time (ms) before the failsafe auto-dismisses the loader. */
+const FAILSAFE_MS = 6_000;
+
+const Loader = ({ onLoadingComplete }: LoaderProps) => {
+  /** true while the video is still playing; false once it ends (or failsafe fires). */
+  const [isPlaying, setIsPlaying] = useState(true);
+  /** true while the zoom-out reveal animation is running. */
+  const [isRevealing, setIsRevealing] = useState(false);
+  /** Guards against triggering the reveal more than once. */
+  const revealTriggered = useRef(false);
+  const failsafeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // ── Trigger the reveal animation (called once) ──────────────────────
+  const triggerReveal = useCallback(() => {
+    if (revealTriggered.current) return;
+    revealTriggered.current = true;
+
+    // Clear the failsafe if the video ended naturally.
+    if (failsafeTimer.current) {
+      clearTimeout(failsafeTimer.current);
+      failsafeTimer.current = null;
+    }
+
+    setIsPlaying(false);
+    setIsRevealing(true);
+  }, []);
+
+  // ── Failsafe timer ─────────────────────────────────────────────────
+  useEffect(() => {
+    failsafeTimer.current = setTimeout(triggerReveal, FAILSAFE_MS);
+
+    return () => {
+      if (failsafeTimer.current) {
+        clearTimeout(failsafeTimer.current);
+      }
+    };
+  }, [triggerReveal]);
+
+  // ── Called when the Framer-Motion scale animation finishes ──────────
+  const handleRevealComplete = () => {
+    setIsRevealing(false);
+    onLoadingComplete();
+  };
+
+  // ── Video ended handler ────────────────────────────────────────────
+  const handleVideoEnded = () => {
+    triggerReveal();
+  };
+
+  // ── Video error handler (same as failsafe: dismiss) ────────────────
+  const handleVideoError = () => {
+    triggerReveal();
+  };
+
+  const showOverlay = isPlaying || isRevealing;
+
+  return (
+    <AnimatePresence>
+      {showOverlay && (
+        <motion.div
+          key="loader-overlay"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#0055ff",
+            /* Avoid inheriting the global * transition rule */
+            transition: "none",
+          }}
+          /* Fade out the overlay background once the scale animation runs */
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.video
+            src={loadingVideo}
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnded}
+            onError={handleVideoError}
+            /* Zoom-out reveal: scale 1 → 15 */
+            animate={isRevealing ? { scale: 15, opacity: 0 } : { scale: 1, opacity: 1 }}
+            transition={
+              isRevealing
+                ? { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+                : { duration: 0 }
+            }
+            onAnimationComplete={isRevealing ? handleRevealComplete : undefined}
+            style={{
+              width: "min(40vw, 500px)",
+              objectFit: "contain" as const,
+              /* Avoid inheriting the global * transition rule */
+              transition: "none",
+            }}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default Loader;
