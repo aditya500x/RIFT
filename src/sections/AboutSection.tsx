@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import logoImage from "@/assets/logo/main_full_black.png";
+import revaUniversityImage from "@/assets/images/others/reva-university.webp";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -35,8 +35,8 @@ const AboutSection = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src={logoImage}
-                alt="REVA RIFT event"
+                src={revaUniversityImage}
+                alt="REVA University"
                 className="w-full h-auto object-contain max-h-80 rounded-sm"
                 whileHover={{ rotateY: 8, rotateX: -5 }}
                 transition={{ duration: 0.4 }}
