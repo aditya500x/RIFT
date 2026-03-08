@@ -33,8 +33,8 @@ const FAQs = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <main className="pt-32 pb-40">
-        <div className="container max-w-6xl">
+      <main className="pt-24 md:pt-32 pb-20 md:pb-40">
+        <div className="container max-w-6xl px-4 md:px-6">
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -46,30 +46,31 @@ const FAQs = () => {
             <h1 style={{
               fontFamily: "'BL Melody SemiBold', sans-serif",
               fontWeight: 600,
-              fontSize: '48px',
+              fontSize: 'clamp(28px, 6vw, 48px)',
               lineHeight: '100%',
               letterSpacing: '0%',
               textAlign: 'center',
-              width: '973px',
-              height: '73px',
-              transform: 'rotate(0deg)',
+              width: '100%',
+              maxWidth: '973px',
+              minHeight: '73px',
               opacity: 1,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              flexWrap: 'wrap' as const
             }}>
               <span className="text-[#0052FF] mr-[0.25em]">Frequently</span> Asked Questions
             </h1>
             <p className="text-muted-foreground opacity-70" style={{
               fontFamily: "'BL Melody ExtraLight', sans-serif",
               fontWeight: 200,
-              fontSize: '25px',
+              fontSize: 'clamp(18px, 4vw, 25px)',
               lineHeight: '100%',
               letterSpacing: '0%',
               textAlign: 'center',
-              width: '973px',
-              height: '30px',
-              transform: 'rotate(0deg)',
+              width: '100%',
+              maxWidth: '973px',
+              minHeight: '30px',
               opacity: 1
             }}>
               description
@@ -80,7 +81,7 @@ const FAQs = () => {
           <div className="space-y-12 mt-4 px-4">
             {faqData.map((section, sIdx) => (
               <div key={sIdx}>
-                <h2 className="text-4xl font-bold text-center text-[#0052FF] mb-4" style={{ fontFamily: "'BL Melody SemiBold', sans-serif" }}>
+                <h2 className="text-2xl md:text-4xl font-bold text-center text-[#0052FF] mb-4" style={{ fontFamily: "'BL Melody SemiBold', sans-serif" }}>
                   {section.category}
                 </h2>
                 <Accordion
@@ -88,11 +89,11 @@ const FAQs = () => {
                   collapsible
                   className="mx-auto flex flex-col pt-0"
                   style={{
-                    width: '851px',
+                    width: '100%',
+                    maxWidth: '851px',
                     minHeight: '306px',
                     gap: '22px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
+                    opacity: 1
                   }}
                 >
                   {section.questions.map((item, qIdx) => (
@@ -109,9 +110,6 @@ const FAQs = () => {
                           fontSize: '16px',
                           lineHeight: '100%',
                           letterSpacing: '0%',
-                          width: '80.1212408185573px',
-                          height: '20.12973137773939px',
-                          transform: 'rotate(-0.2deg)',
                           opacity: 1,
                           display: 'inline-block',
                           textAlign: 'left'
