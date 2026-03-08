@@ -115,7 +115,7 @@ const PreScheduleShowcase = () => {
 
                 {/* Description and CTA - hidden on mobile, shown on desktop */}
                 <div className="hidden md:block space-y-4 pt-2">
-                  <p className="min-h-[86px] bg-gradient-to-r from-[#2f3138] to-[#26282f] border border-white/10 px-5 py-4 text-sm leading-relaxed text-white/80">
+                  <p className="text-sm font-normal leading-relaxed text-white/70">
                     {card.description}
                   </p>
                   <button
@@ -164,7 +164,7 @@ const PreScheduleShowcase = () => {
 
               {/* Description and CTA - shown only on mobile (after image) */}
               <div className="md:hidden space-y-4 pt-1">
-                <p className="bg-gradient-to-r from-[#2f3138] to-[#26282f] border border-white/10 px-5 py-4 text-sm leading-relaxed text-white/80">
+                <p className="text-sm font-normal leading-relaxed text-white/70">
                   {card.description}
                 </p>
                 <div className="text-center">
