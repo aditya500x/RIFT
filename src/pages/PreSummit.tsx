@@ -18,9 +18,9 @@ export default function PreSummit() {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
         </section>
 
-        <div className="container max-w-6xl px-4 -mt-10 relative z-10 text-center">
+        <div className="container max-w-7xl px-4 -mt-10 relative z-10 flex flex-col items-center">
           {/* Main Title */}
-          <h1 className="mb-24" style={{ 
+          <h1 className="mb-24 text-center" style={{ 
             fontFamily: "'Monument Extended', sans-serif",
             fontWeight: 600,
             fontSize: 'clamp(32px, 6vw, 56px)',
@@ -30,21 +30,21 @@ export default function PreSummit() {
             Pre <span className="text-[#0052FF]">Summit</span>
           </h1>
 
-          {/* Styled Content Blocks from Mockup */}
-          <div className="space-y-6 max-w-6xl mx-auto">
-            {/* Block 1: Narrow Rounded Pill */}
-            <div className="w-full h-14 bg-[#1A1A1A] rounded-full border border-white/5 shadow-2xl" />
-            
-            {/* Block 2: Large Content Area */}
-            <div className="w-full aspect-[21/9] bg-[#1A1A1A] rounded-sm border border-white/5 shadow-2xl flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-tr from-white/[0.02] to-transparent" />
+          {/* Centered Content Blocks */}
+          <div className="w-full space-y-16 mt-16">
+            <div className="text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Strategic Kickoff & Innovation Dialogue</h3>
+              <p className="text-white/60 text-sm md:text-base font-normal leading-relaxed mx-auto max-w-none">
+                The Pre-Summit marks the strategic beginning of REVA RIFT 2026, bringing together students, mentors, and technology leaders to define the direction of the innovation journey ahead. Through expert dialogues and discussions, participants explore emerging technological trends and real-world challenges across areas such as artificial intelligence, cloud systems, cybersecurity, sustainability, and digital infrastructure. This phase helps participants understand the broader landscape of modern technology and identify meaningful problem spaces that will shape the upcoming hackathons.
+              </p>
             </div>
 
-            {/* Block 3: Narrow Rounded Pill (Spaced) */}
-            <div className="w-full h-14 bg-[#1A1A1A] rounded-full border border-white/5 shadow-2xl mt-16" />
-
-            {/* Block 4: Large Content Area */}
-            <div className="w-full aspect-[21/9] bg-[#1A1A1A] rounded-sm border border-white/5 shadow-2xl" />
+            <div className="text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Setting the Foundation for Innovation</h3>
+              <p className="text-white/60 text-sm md:text-base font-normal leading-relaxed mx-auto max-w-none">
+                More than just an opening event, the Pre-Summit establishes the foundation for the structured REVA RIFT experience. It encourages early-stage ideation, collaborative thinking, and strategic alignment before participants move into the hands-on workshop series and domain-focused hackathons. By providing context, inspiration, and direction, the Pre-Summit ensures that teams begin their innovation journey with well-defined ideas and a clear understanding of how to transform concepts into impactful solutions.
+              </p>
+            </div>
           </div>
         </div>
       </main>
