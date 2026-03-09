@@ -10,21 +10,100 @@ import {
 
 const faqData = [
   {
-    category: "General",
+    category: "General Information",
     questions: [
-      { q: "Question", a: "Answer detail for the general question goes here. We keep it concise and relevant." },
-      { q: "Question", a: "Answer detail for the general question goes here. We keep it concise and relevant." },
-      { q: "Question", a: "Answer detail for the general question goes here. We keep it concise and relevant." },
-      { q: "Question", a: "Answer detail for the general question goes here. We keep it concise and relevant." },
+      { 
+        q: "What is REVA RIFT 2026?", 
+        a: "REVA RIFT 2026 is a global, multi-domain tech fest built to unite students, ideas, and disciplines. Instead of a traditional weekend hackathon, it is a 5-week structured innovation journey." 
+      },
+      { 
+        q: "Who is organizing the event?", 
+        a: "The event is presented by the Google Developer Group On Campus at REVA University." 
+      },
+      { 
+        q: "Where is the event taking place?", 
+        a: "The event will be held at REVA University in Bengaluru, India. Activities will take place on campus, including at the Swami Vivekananda Block." 
+      },
+      { 
+        q: "Is this an online or offline event?", 
+        a: "The event will run in a primarily offline format." 
+      },
     ]
   },
   {
-    category: "Category",
+    category: "Eligibility & Participation",
     questions: [
-      { q: "Question", a: "Answer detail for this specific category question goes here." },
-      { q: "Question", a: "Answer detail for this specific category question goes here." },
-      { q: "Question", a: "Answer detail for this specific category question goes here." },
-      { q: "Question", a: "Answer detail for this specific category question goes here." },
+      { 
+        q: "Who can participate in REVA RIFT?", 
+        a: "Participation is open to students across all disciplines." 
+      },
+      { 
+        q: "Can students from other colleges apply?", 
+        a: "Yes, inter-college participation is actively encouraged. There is also an international participation policy." 
+      },
+      { 
+        q: "What is the required team size?", 
+        a: "Teams must consist of 2 to 4 members." 
+      },
+    ]
+  },
+  {
+    category: "Event Phases & Key Dates",
+    questions: [
+      { 
+        q: "What is the overall timeline of the event?", 
+        a: "The event unfolds over a dynamic five-week experience, strategically designed across three phases:\n\n• Phase-I (R-SUMMIT): March 9-11.\n• Phase-II (RISE): April 8-9.\n• Phase-III (REVOLT): April 10-11." 
+      },
+      { 
+        q: "What happens during Phase-I (Pre-Summit)?", 
+        a: "Phase-I focuses on framing the innovation agenda with a strategic panel discussion, NammaHack validation, and an Ideathon featuring an 8,000 prize pool." 
+      },
+    ]
+  },
+  {
+    category: "Workshops & Hackathons",
+    questions: [
+      { 
+        q: "What can I expect from the workshops in Phase-II?", 
+        a: "Phase-II features 6 specialized, hands-on workshop sessions designed to bridge classroom theory and industry execution. Topics include Google Stitch, Google's GenAI, Google Wing, Game Design, and Flagship AI Models." 
+      },
+      { 
+        q: "What is the 7X24 Ultimate Hack Sprint (Phase-III)?", 
+        a: "This is the core of REVA RIFT, consisting of 7 parallel domain hackathons running as a continuous 24-hour build sprint." 
+      },
+      { 
+        q: "What are the specific hackathon domains?", 
+        a: "Participants can compete in specialized tracks including Ideathon, Gameathon, Premier Sprint, Hardware, Designathon, Social Impact, and Algorand." 
+      },
+    ]
+  },
+  {
+    category: "Registration & Contact",
+    questions: [
+      { 
+        q: "How do I register my team?", 
+        a: "Registration is processed online via the official website. The process involves selecting your track and waiting for confirmation." 
+      },
+      { 
+        q: "Is there a qualification process for the hackathons?", 
+        a: "Yes, Grand Hackathon registrations operate separately and utilize an escalation-based qualification model with screening pathways where applicable." 
+      },
+      { 
+        q: "How can I contact the organizers?", 
+        a: (
+          <>
+            You can reach out through the following official channels:
+            <br /><br />
+            • Email: <a href="mailto:gdgoc.reva@gmail.com" className="text-[#0052FF] hover:underline">gdgoc.reva@gmail.com</a> or <a href="mailto:reva.rift@gmail.com" className="text-[#0052FF] hover:underline">reva.rift@gmail.com</a>
+            <br />
+            • Phone: <a href="tel:+919110616340" className="text-[#0052FF] hover:underline">+91 91106 16340</a>
+            <br />
+            • Website: <a href="https://reva-rift.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#0052FF] hover:underline">https://reva-rift.vercel.app/</a>
+            <br />
+            • Instagram: <a href="https://www.instagram.com/reva.rift_fest/" target="_blank" rel="noopener noreferrer" className="text-[#0052FF] hover:underline">@reva.rift_fest</a>
+          </>
+        )
+      },
     ]
   }
 ];
@@ -78,7 +157,7 @@ const FAQs = () => {
           </motion.div>
 
           {/* FAQ Categories */}
-          <div className="space-y-12 mt-4 px-4">
+          <div className="space-y-20 mt-12 px-4">
             {faqData.map((section, sIdx) => (
               <div key={sIdx}>
                 <h2 className="text-2xl md:text-4xl font-bold text-center text-black mb-4" style={{ fontFamily: "'BL Melody SemiBold', sans-serif" }}>
@@ -91,7 +170,6 @@ const FAQs = () => {
                   style={{
                     width: '100%',
                     maxWidth: '851px',
-                    minHeight: '306px',
                     gap: '22px',
                     opacity: 1
                   }}
@@ -117,7 +195,7 @@ const FAQs = () => {
                           {item.q}
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-6 px-1 text-lg leading-relaxed">
+                      <AccordionContent className="text-muted-foreground pb-6 px-1 text-lg leading-relaxed whitespace-pre-line">
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>
