@@ -28,7 +28,7 @@ const WhoShouldJoinSection = () => {
     ));
 
   return (
-    <section className="py-32 border-b border-border" ref={ref}>
+    <section className="pt-32 pb-0" ref={ref}>
       <div className="container">
         <motion.div
           className="text-center mb-20"
@@ -50,14 +50,6 @@ const WhoShouldJoinSection = () => {
         <div className="marquee-content">
           <div className="py-4">
             <div className="flex animate-marquee">
-              <div className="flex items-center shrink-0">{renderRoles()}</div>
-              <div className="flex items-center shrink-0">{renderRoles()}</div>
-            </div>
-          </div>
-
-      {/* Roles marquee - row 2 (reverse) */}
-          <div className="py-4 border-t border-foreground/15">
-            <div className="flex animate-marquee-reverse">
               <div className="flex items-center shrink-0">{renderRoles()}</div>
               <div className="flex items-center shrink-0">{renderRoles()}</div>
             </div>

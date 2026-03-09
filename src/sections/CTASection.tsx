@@ -6,7 +6,7 @@ const CTASection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-32 bg-foreground text-background dark-section-lines" ref={ref}>
+    <section className="pt-16 pb-32 bg-foreground text-background dark-section-lines" ref={ref}>
       <div className="container text-center flex flex-col items-center gap-10">
         <motion.h2
           className="section-title section-title-cta max-w-4xl"
