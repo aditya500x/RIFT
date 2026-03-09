@@ -48,12 +48,10 @@ export default function Workshops() {
           {/* Header */}
           <div className="text-center mb-24 flex flex-col items-center">
             <h1 className="mx-auto flex items-center justify-center text-center" style={{ 
-              fontFamily: "'BL Melody SemiBold', sans-serif",
+              fontFamily: "'Monument Extended', sans-serif",
               fontWeight: 600,
               fontSize: '48px',
               lineHeight: '100%',
-              width: '258px',
-              height: '58px',
               marginBottom: '16px'
             }}>
               <span className="text-[#0052FF]">Work</span>shops

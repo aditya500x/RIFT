@@ -90,7 +90,6 @@ const Footer = () => {
                 <img src={whatsappIcon} alt="WhatsApp" className="h-5 w-5 object-contain" />
               </a>
             </div>
-            <span className="order-2 md:order-1">Social Icons</span>
           </div>
         </div>
         <div className="py-3 text-center"></div>
