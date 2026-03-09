@@ -19,13 +19,14 @@ import Footer from "@/components/layout/Footer";
 // Import images here when they are available in src/assets/images/jury/
 // Example: import sarahImg from "@/assets/images/jury/sarah.png";
 import sample01 from "@/assets/images/jury/sample01.png"
+import linkedinIcon from "@/assets/icons/linkedin.svg"
 
 const juryMembers = [
   {
     name: "Name",
     role: "Designation",
     image: sample01,
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Name",
@@ -134,7 +135,7 @@ const Jury = () => {
 
                 {/* Info Section */}
                 <div className="w-full" style={{ maxWidth: '350px' }}>
-                  <div className="pb-1 border-b-[1px] border-black mb-2">
+                  <div className="pb-1 border-b-[1px] border-black mb-2 flex justify-between items-center">
                     <h3 style={{
                       fontFamily: "'BL Melody Medium', sans-serif",
                       fontWeight: 500,
@@ -151,6 +152,19 @@ const Jury = () => {
                     }} className="transition-colors group-hover:text-[#0052FF]">
                       {member.name}
                     </h3>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-110"
+                    >
+                      <img 
+                        src={linkedinIcon} 
+                        alt="LinkedIn" 
+                        className="h-[22px] w-auto" 
+                        style={{ filter: "brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(7413%) hue-rotate(227deg) brightness(101%) contrast(107%)" }}
+                      />
+                    </a>
                   </div>
 
                   <p style={{
