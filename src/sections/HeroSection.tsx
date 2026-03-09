@@ -1,6 +1,7 @@
 import { Calendar, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import logoFull from "@/assets/logo/2nd_main_3.png";
+import gdgLogo from "@/assets/images/others/gdg-reva-university.webp";
 
 const HeroSection = () => {
   return (
@@ -45,7 +46,7 @@ const HeroSection = () => {
           India's digital future.
         </motion.p>
 
-       <motion.div
+        <motion.div
           className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-xs md:text-sm text-foreground mt-1"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,7 +54,7 @@ const HeroSection = () => {
         >
           <div className="flex items-center gap-3">
             <span>Organized by:</span>
-            <img src={logoFull} alt="Organized by" className="h-5 w-auto object-contain" />
+            <img src={gdgLogo} alt="Organized by" className="h-10 w-auto object-contain" />
           </div>
           <div className="flex items-center gap-3">
             <span>CO-Organized by:</span>
@@ -61,7 +62,7 @@ const HeroSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <span>In Partnership:</span>
-            <img src={logoFull} alt="Organized by" className="h-5 w-auto object-contain" /> 
+            <img src={logoFull} alt="Organized by" className="h-5 w-auto object-contain" />
           </div>
         </motion.div>
 

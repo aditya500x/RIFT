@@ -73,62 +73,57 @@ const Loader = ({ onLoadingComplete }: LoaderProps) => {
     triggerReveal();
   };
 
-  const showOverlay = isPlaying || isRevealing;
-
   return (
-    <AnimatePresence>
-      {showOverlay && (
-        <motion.div
-          key="loader-overlay"
-          initial={{ backgroundColor: "#0055ff" }}
-          animate={{ 
-            backgroundColor: isRevealing ? "#ffffff" : "#0055ff"
-          }}
-          transition={{ 
-            backgroundColor: { delay: 0.6, duration: 0.2 },
-          }}
+    <motion.div
+      key="loader-overlay"
+      initial={{ backgroundColor: "#0055ff" }}
+      animate={{ 
+        backgroundColor: isRevealing ? "#ffffff" : "#0055ff"
+      }}
+      transition={{ 
+        backgroundColor: { delay: 0.5, duration: 0.3, ease: "easeInOut" },
+      }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+      }}
+    >
+      <motion.div
+        initial={{ scale: 1, opacity: 1 }}
+        animate={isRevealing ? { scale: 60 } : { scale: 1 }}
+        transition={
+          isRevealing
+            ? { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+            : { duration: 0 }
+        }
+        onAnimationComplete={() => {
+          if (isRevealing) onLoadingComplete();
+        }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <video
+          src={loadingVideo}
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnded}
+          onError={handleVideoError}
           style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden", // Prevent scrollbars during zoom
+            width: "min(20vw, 200px)",
+            objectFit: "contain" as const,
           }}
-        >
-          <motion.div
-            /* Zoom-out reveal: scale 1 → 50 (keep opacity full) */
-            initial={{ scale: 1, opacity: 1 }}
-            animate={isRevealing ? { scale: 50 } : { scale: 1 }}
-            transition={
-              isRevealing
-                ? { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
-                : { duration: 0 }
-            }
-            onAnimationComplete={isRevealing ? handleRevealComplete : undefined}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <video
-              src={loadingVideo}
-              autoPlay
-              muted
-              playsInline
-              onEnded={handleVideoEnded}
-              onError={handleVideoError}
-              style={{
-                width: "min(20vw, 200px)",
-                objectFit: "contain" as const,
-              }}
-            />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        />
+      </motion.div>
+    </motion.div>
   );
 };
 

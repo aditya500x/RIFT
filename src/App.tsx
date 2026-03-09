@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import FAQs from "./pages/FAQs";
 import Jury from "./pages/Jury";
 import Team from "./pages/Team";
+import Workshops from "./pages/Workshops";
+import Divisions from "./pages/Divisions";
 import NotFound from "./pages/NotFound";
 
 import ScrollToTop from "./components/layout/ScrollToTop";
@@ -45,6 +47,8 @@ const App = () => {
               <Route path="/faqs" element={<FAQs />} />
               <Route path="/jury" element={<Jury />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/workshops" element={<Workshops />} />
+              <Route path="/divisions" element={<Divisions />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
