@@ -120,7 +120,7 @@ const FAQs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col items-center mb-20"
+            className="flex flex-col items-center mb-10 md:mb-14"
           >
             <h1 style={{
               fontFamily: "'BL Melody SemiBold', sans-serif",
@@ -151,13 +151,11 @@ const FAQs = () => {
               maxWidth: '973px',
               minHeight: '30px',
               opacity: 1
-            }}>
-              description
-            </p>
+            }}></p>
           </motion.div>
 
           {/* FAQ Categories */}
-          <div className="space-y-20 mt-12 px-4">
+          <div className="space-y-12 md:space-y-16 mt-4 md:mt-6 px-4">
             {faqData.map((section, sIdx) => (
               <div key={sIdx}>
                 <h2 className="text-2xl md:text-4xl font-bold text-center text-black mb-4" style={{ fontFamily: "'BL Melody SemiBold', sans-serif" }}>
@@ -195,7 +193,15 @@ const FAQs = () => {
                           {item.q}
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-6 px-1 text-lg leading-relaxed whitespace-pre-line">
+                      <AccordionContent
+                        className="text-muted-foreground pb-6 px-1 leading-relaxed whitespace-pre-line"
+                        style={{
+                          fontFamily: "'BL Melody Book', sans-serif",
+                          fontWeight: 400,
+                          fontSize: "15px",
+                          letterSpacing: "0.01em",
+                        }}
+                      >
                         {item.a}
                       </AccordionContent>
                     </AccordionItem>

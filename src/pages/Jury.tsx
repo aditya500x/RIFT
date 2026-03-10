@@ -67,7 +67,7 @@ const Jury = () => {
       <main className="pt-24 md:pt-32 pb-20 md:pb-40">
         <div className="w-full flex flex-col items-center px-4 md:px-0">
           {/* Header Section */}
-          <div className="text-center mb-12 md:mb-24 flex flex-col items-center">
+          <div className="text-center mb-8 md:mb-14 flex flex-col items-center">
             <h1 className="mx-auto flex items-center justify-center" style={{
               fontFamily: "'BL Melody SemiBold', sans-serif",
               fontWeight: 600,
@@ -93,7 +93,6 @@ const Jury = () => {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              Short Description
             </p>
           </div>
 
