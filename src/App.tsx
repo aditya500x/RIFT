@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 
 import ScrollToTop from "./components/layout/ScrollToTop";
 import Loader from "./components/layout/Loader";
+import SmoothScroll from "./components/layout/SmoothScroll";
 
 const queryClient = new QueryClient();
 
@@ -45,18 +46,20 @@ const App = () => {
         >
           <BrowserRouter>
             <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/faqs" element={<FAQs />} />
-              <Route path="/jury" element={<Jury />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/workshops" element={<Workshops />} />
-              <Route path="/divisions" element={<Divisions />} />
-              <Route path="/presummit" element={<PreSummit />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <SmoothScroll>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/faqs" element={<FAQs />} />
+                <Route path="/jury" element={<Jury />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/workshops" element={<Workshops />} />
+                <Route path="/divisions" element={<Divisions />} />
+                <Route path="/presummit" element={<PreSummit />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </SmoothScroll>
           </BrowserRouter>
         </motion.div>
       </TooltipProvider>
