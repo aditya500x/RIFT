@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import eventImage from "@/assets/images/others/event-image.jpg";
+import eventImage from "@/assets/images/others/event-image.webp";
 
 export default function PreSummit() {
   return (
