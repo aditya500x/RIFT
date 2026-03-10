@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -13,15 +13,50 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    let timeoutId: number | null = null;
+    
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      setScrolled(currentScrollY > 20);
+
+      // If menu is open, don't hide the navbar but track scroll for closing menu
+      if (open) {
+        if (currentScrollY > lastScrollY.current + 50) {
+          setOpen(false);
+        }
+        setVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Hide on scroll down, show on scroll up with a small buffer for mobile
+      const diff = currentScrollY - lastScrollY.current;
+      
+      if (diff > 5 && currentScrollY > 80) {
+        // Scrolling down
+        setVisible(false);
+      } else if (diff < -5 || currentScrollY <= 20) {
+        // Scrolling up or at top
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, [open]);
 
   const handleNavClick = (event: React.MouseEvent<HTMLElement>, link: typeof navLinks[0]) => {
     event.preventDefault();
@@ -60,7 +95,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-500 will-change-transform ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      } ${
         scrolled
           ? "bg-background/95 backdrop-blur-md shadow-sm"
           : "bg-background/80 backdrop-blur-sm"

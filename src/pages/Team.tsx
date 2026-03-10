@@ -68,13 +68,11 @@ function ProfileCard({ member }: { member: TeamMember | null }) {
 export default function Team() {
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Navbar backdrop fix: Ensures the transparent navbar area stays white */}
-      <div className="fixed top-0 left-0 right-0 h-16 bg-white z-[45]" />
       <Navbar />
       
       <main>
         {/* ── About Us Section (Black) ── */}
-        <section className="bg-black text-white pt-16 pb-32">
+        <section className="bg-black text-white pt-0 pb-32">
           {/* Hero Image / Header area - Full width, attached to top and sides */}
           <div className="relative w-full h-[250px] md:h-[450px] mb-12 flex items-center justify-center overflow-hidden">
             <img 
