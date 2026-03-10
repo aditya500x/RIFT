@@ -6,6 +6,7 @@ import ImpactSection from "@/sections/ImpactSection";
 import MarqueeSection from "@/sections/MarqueeSection";
 import PreScheduleShowcase from "@/sections/PreScheduleShowcase";
 import ScheduleSection from "@/sections/ScheduleSection";
+import PartnersSection from "@/sections/PartnersSection";
 import WhoShouldJoinSection from "@/sections/WhoShouldJoinSection";
 import CTASection from "@/sections/CTASection";
 
@@ -21,6 +22,7 @@ const Index = () => {
       <PreScheduleShowcase />
       <MarqueeSection />
       <ScheduleSection />
+      <PartnersSection />
       <WhoShouldJoinSection />
       <CTASection />
       <Footer />
