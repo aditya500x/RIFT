@@ -1,5 +1,5 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 const stats = [
   { number: "7", label: "Hackathons", description: "AI, IoT, and Web3 innovation" },
@@ -7,6 +7,32 @@ const stats = [
   { number: "6", label: "Workshops", description: "Curated Technical Workshops" },
   { number: "3000+", label: "Participants", description: "Projected Participants" },
 ];
+
+const Counter = ({ value }: { value: string }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const numericValue = parseInt(value.replace(/[^0-9]/g, "")) || 0;
+  const suffix = value.replace(/[0-9]/g, "");
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, numericValue, {
+        duration: 2,
+        ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for a smooth deceleration (easeOutExpo)
+      });
+    }
+  }, [isInView, numericValue, count]);
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+};
 
 const ImpactSection = () => {
   const ref = useRef(null);
@@ -38,7 +64,7 @@ const ImpactSection = () => {
               transition={{ duration: 0.45, delay: i * 0.08 }}
             >
               <div className="text-4xl md:text-5xl font-black text-primary mb-2 group-hover:scale-110 transition-transform duration-300 origin-left">
-                {stat.number}
+                <Counter value={stat.number} />
               </div>
               <div className="font-bold text-xl text-foreground mb-1">{stat.label}</div>
               <div className="text-sm text-muted-foreground leading-relaxed">{stat.description}</div>
