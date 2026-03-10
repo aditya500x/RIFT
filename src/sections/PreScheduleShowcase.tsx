@@ -56,7 +56,7 @@ const showcaseCards: ShowcaseCard[] = [
   },
 ];
 
-const SLIDE_INTERVAL_MS = 2500;
+const SLIDE_INTERVAL_MS = 2000;
 
 const PreScheduleShowcase = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -73,12 +73,7 @@ const PreScheduleShowcase = () => {
     });
 
     const interval = setInterval(() => {
-      setActiveSlides((prev) =>
-        prev.map((index, cardIndex) => {
-          const totalSlides = showcaseCards[cardIndex].images.length;
-          return (index + 1) % totalSlides;
-        }),
-      );
+      setActiveSlides((prev) => prev.map((count) => count + 1));
     }, SLIDE_INTERVAL_MS);
 
     return () => clearInterval(interval);
@@ -88,7 +83,9 @@ const PreScheduleShowcase = () => {
     <section className="py-24 bg-foreground text-background border-b border-foreground/20 dark-section-lines" ref={sectionRef}>
       <div className="container max-w-5xl relative z-10">
         {showcaseCards.map((card, i) => {
-          const currentSlide = activeSlides[i];
+          const totalIndex = activeSlides[i];
+          const N = card.images.length;
+          const currentSlide = totalIndex % N;
           const isReversed = Boolean(card.reverseOnDesktop);
           const [firstWord] = card.title.split(" ");
 
@@ -153,19 +150,34 @@ const PreScheduleShowcase = () => {
               {/* Image slider - second on mobile, alternating position on desktop */}
               <div className={`${isReversed ? "md:order-2" : "md:order-1"} space-y-4`}>
                 <div className="relative h-[240px] md:h-[260px] rounded-sm bg-gradient-to-br from-[#2f3138] to-[#26282f] border border-white/10 flex items-center justify-center overflow-hidden">
-                  {card.images.map((img, imgIndex) => (
-                    <motion.img
-                      key={`${card.title}-${imgIndex}`}
-                      src={img}
-                      alt={`${card.title} visual ${imgIndex + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: imgIndex === currentSlide ? 1 : 0 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                      style={{ pointerEvents: imgIndex === currentSlide ? 'auto' : 'none' }}
-                      draggable={false}
-                    />
-                  ))}
+                  {card.images.map((img, imgIndex) => {
+                    // Wrap-around logic for infinite one-way slide
+                    // wrappedDiff is in [-1, N-2] range (for N=3 it's [-1, 0, 1])
+                    const diff = imgIndex - totalIndex;
+                    const wrappedDiff = ((diff % N) + N + Math.floor(N / 2)) % N - Math.floor(N / 2);
+                    const virtualPos = totalIndex + wrappedDiff;
+
+                    return (
+                      <motion.img
+                        key={`${card.title}-${imgIndex}-${virtualPos}`}
+                        src={img}
+                        alt={`${card.title} visual ${imgIndex + 1}`}
+                        className="absolute inset-0 w-full h-full object-cover will-change-transform"
+                        initial={false}
+                        animate={{ 
+                          x: `${wrappedDiff * 100}%`
+                        }}
+                        transition={{ 
+                          duration: 0.4, 
+                          ease: [0.2, 0, 0, 1]
+                        }}
+                        style={{ 
+                          pointerEvents: wrappedDiff === 0 ? 'auto' : 'none'
+                        }}
+                        draggable={false}
+                      />
+                    );
+                  })}
                 </div>
 
                 <div className="flex items-center justify-center gap-2">
@@ -177,7 +189,12 @@ const PreScheduleShowcase = () => {
                         dotIndex === currentSlide ? "w-5 bg-white" : "w-1.5 bg-white/45"
                       }`}
                       onClick={() =>
-                        setActiveSlides((prev) => prev.map((slide, slideIndex) => (slideIndex === i ? dotIndex : slide)))
+                        setActiveSlides((prev) => prev.map((count, slideIndex) => {
+                          if (slideIndex !== i) return count;
+                          const currentMod = count % N;
+                          const moveForward = (dotIndex - currentMod + N) % N;
+                          return count + moveForward;
+                        }))
                       }
                       aria-label={`Show ${card.title} slide ${dotIndex + 1}`}
                     />
