@@ -6,7 +6,6 @@ import logoFull from "@/assets/logo/2nd_main_3.png";
 
 const navLinks = [
   { label: "About", href: "#about", type: "hash" },
-  { label: "Tracks", href: "#tracks", type: "hash" },
   { label: "Schedule", href: "#schedule", type: "hash" },
   { label: "Contact", href: "#contact", type: "hash" },
 ];
